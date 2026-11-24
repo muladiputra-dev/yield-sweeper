@@ -86,6 +86,28 @@ another hot key, another server, another thing that dies at 3am and gets drained
 Prereqs: Foundry, a private key, Sepolia ETH (for gas + faucet), and testnet
 REACT.
 
+### Deployed live (2026-11-24)
+
+| Contract | Chain | Address |
+|---|---|---|
+| `YieldSweeperVault` | Base Sepolia (84532) | `0x679790Ab23c02Ce73e2D2FaC001c7db3FBDaf31E` |
+| `YieldSweeperReactive` | Lasna (5318007) | `0x679790Ab23c02Ce73e2D2FaC001c7db3FBDaf31E` |
+
+Cold wallet (owner): `0x7824b8F71bCBc0E15810EefA48D5f45decEF84D5` (hackathon test
+wallet; the same EOA deploys both contracts, so both inherit the same CREATE
+address across chains).
+
+**Verified end-to-end sweep (live on Base Sepolia):**
+
+1. Deposit `0.002 ETH` → Vault: tx `0xe0915ce48ce760a8cb6e6b0db07cbb7d8307fa3a63b8b9093ffe604c17fd04bc` (block 62950476), emitted `Deposited(address(0), …)`.
+2. Reactive Network relayed the event and delivered the authenticated callback.
+3. Vault swept `0.002 ETH` to cold wallet: `Swept` log at block 62950483 in tx `0xfef0d545e9ab5b0b3fa9a29516a1bee6c54c79004bd312e605d19920473d5a96` (7 blocks after deposit).
+4. Post-sweep vault ETH balance = `0`; cold wallet received the funds.
+
+`Reactscan` shows `SUBSCRIPTIONS: 1` for the reactive contract, `ADDRESS TYPE: REACTIVE CONTRACT`.
+
+### Deploy from scratch
+
 ### 1. Deploy the vault (origin chain)
 
 ```bash
