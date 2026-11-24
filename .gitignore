@@ -1,0 +1,10 @@
+# build artifacts
+out/
+cache/
+
+# forge
+broadcast/
+
+# env / secrets
+.env
+*.env
