@@ -128,8 +128,11 @@ cast send $VAULT "setMinSweep(address,uint256)" $USDC 50000000 \
 
 ### 5. Get testnet REACT (for reactive gas)
 
-Send ≥1 Sepolia ETH to the Reactive faucet on Ethereum Sepolia
-`0x9b9BB25f1A81078C544C829c5EB7822d747Cf434` → receive 100 lREACT on Lasna.
+Send ≥1 Sepolia ETH to the Reactive faucet on **Base Sepolia**
+`0x2afaFD298b23b62760711756088F75B7409f5967` (or Ethereum Sepolia
+`0x9b9BB25f1A81078C544C829c5EB7822d747Cf434`) → receive 100 lREACT on Lasna
+per 1 ETH. Max 5 ETH per tx (500 lREACT). Gas for the reactive deploy on Lasna
+is ~0.27 lREACT, so 0.5–1 lREACT is plenty.
 
 ## Testing
 
